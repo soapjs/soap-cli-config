@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "0.0.0",
   "languages": [
     {
       "name": "TypeScript",
@@ -13,6 +13,12 @@
       ],
       "soap_cli_modules": [
         "@soapjs/soap-cli-typescript"
+      ],
+      "presets": [
+        {
+          "name": "Default",
+          "alias": "default"
+        }
       ]
     },
     {
@@ -24,6 +30,12 @@
       ],
       "soap_cli_modules": [
         "@soapjs/soap-cli-javascript"
+      ],
+      "presets": [
+        {
+          "name": "Default",
+          "alias": "default"
+        }
       ]
     }
   ],
