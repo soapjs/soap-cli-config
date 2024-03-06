@@ -274,7 +274,7 @@
       }
     }
   ],
-  "messaging": [
+  "message_brokers": [
     {
       "name": "RabbitMQ",
       "alias": "rabbit",
