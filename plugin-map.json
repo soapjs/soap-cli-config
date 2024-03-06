@@ -112,8 +112,8 @@
         ]
       },
       "soap_modules": {
-        "typescript": "@soapjs/soap-node-redis",
-        "javascript": "@soapjs/soap-node-redis"
+        "typescript": ["@soapjs/soap-node-redis"],
+        "javascript": ["@soapjs/soap-node-redis"]
       }
     },
     {
@@ -198,6 +198,10 @@
     {
       "name": "NestJS",
       "alias": "nest",
+      "languages": [
+        "typescript",
+        "javascript"
+      ],
       "packages": {
         "typescript": [
           "@nestjs/common@^10.0.0",
