@@ -1,5 +1,5 @@
 {
-  "version": "0.0.0",
+  "version": "1.0.0",
   "languages": [
     {
       "name": "TypeScript",
@@ -8,63 +8,98 @@
         "typescript@^4.5.4",
         "dev:@types/node@^18.7.14"
       ],
-      "plugin": "@soapjs/soap",
-      "cli_plugin": "@soapjs/soap-cli-typescript",
-      "cli_plugin_config_url": "https://raw.githubusercontent.com/soapjs/soap-cli-typescript/main/src/config/config.json",
-      "ioc": [
-        {
-          "name": "SoapJS Singleton Container",
-          "alias": "singleton",
-          "packages": []
-        },
-        {
-          "name": "Inversify",
-          "alias": "inversify",
-          "packages": ["inversify@^6.0.1", "reflect-metadata@^0.1.13"]
-        }
+      "soap_modules": [
+        "@soapjs/soap"
+      ],
+      "soap_cli_modules": [
+        "@soapjs/soap-cli-typescript"
       ]
     },
     {
       "name": "JavaScript",
       "alias": "javascript",
-      "plugin": "@soapjs/soap",
-      "cli_plugin": "@soapjs/soap-cli-javascript",
-      "cli_plugin_config_url": "https://raw.githubusercontent.com/soapjs/soap-cli-javascript/main/src/config/config.json",
-      "ioc": [
-        {
-          "name": "SoapJS Singleton Container",
-          "alias": "singleton",
-          "packages": []
-        },
-        {
-          "name": "Inversify",
-          "alias": "inversify",
-          "packages": ["inversify@^6.0.1"]
-        }
+      "packages": [],
+      "soap_modules": [
+        "@soapjs/soap"
+      ],
+      "soap_cli_modules": [
+        "@soapjs/soap-cli-javascript"
       ]
+    }
+  ],
+  "ioc": [
+    {
+      "name": "SoapJS Singleton Container",
+      "alias": "singleton",
+      "languages": [
+        "typescript",
+        "javascript"
+      ],
+      "packages": {
+        "typescript": [],
+        "javascript": []
+      }
+    },
+    {
+      "name": "Inversify",
+      "alias": "inversify",
+      "languages": [
+        "typescript",
+        "javascript"
+      ],
+      "packages": {
+        "typescript": [
+          "inversify@^6.0.1",
+          "reflect-metadata@^0.1.13"
+        ],
+        "javascript": [
+          "inversify@^6.0.1",
+          "reflect-metadata@^0.1.13"
+        ]
+      }
     }
   ],
   "databases": [
     {
       "name": "MongoDB",
       "alias": "mongo",
+      "languages": [
+        "typescript",
+        "javascript"
+      ],
       "packages": {
-        "typescript": ["mongodb"],
-        "javascript": ["mongodb"]
+        "typescript": [
+          "mongodb"
+        ],
+        "javascript": [
+          "mongodb"
+        ]
       },
-      "plugins": {
-        "typescript": "@soapjs/soap-node-mongo",
-        "javascript": "@soapjs/soap-node-mongo"
+      "soap_modules": {
+        "typescript": [
+          "@soapjs/soap-node-mongo"
+        ],
+        "javascript": [
+          "@soapjs/soap-node-mongo"
+        ]
       }
     },
     {
       "name": "Redis",
       "alias": "redis",
+      "languages": [
+        "typescript",
+        "javascript"
+      ],
       "packages": {
-        "typescript": ["redis"],
-        "javascript": ["redis"]
+        "typescript": [
+          "redis"
+        ],
+        "javascript": [
+          "redis"
+        ]
       },
-      "plugins": {
+      "soap_modules": {
         "typescript": "@soapjs/soap-node-redis",
         "javascript": "@soapjs/soap-node-redis"
       }
@@ -72,13 +107,25 @@
     {
       "name": "MySql",
       "alias": "mysql",
+      "languages": [
+        "typescript",
+        "javascript"
+      ],
       "packages": {
-        "typescript": ["mysql"],
-        "javascript": ["mysql"]
+        "typescript": [
+          "mysql"
+        ],
+        "javascript": [
+          "mysql"
+        ]
       },
-      "plugins": {
-        "typescript": "@soapjs/soap-node-mysql",
-        "javascript": "@soapjs/soap-node-mysql"
+      "soap_modules": {
+        "typescript": [
+          "@soapjs/soap-node-mysql"
+        ],
+        "javascript": [
+          "@soapjs/soap-node-mysql"
+        ]
       }
     }
   ],
@@ -86,6 +133,10 @@
     {
       "name": "Express.js",
       "alias": "express",
+      "languages": [
+        "typescript",
+        "javascript"
+      ],
       "packages": {
         "typescript": [
           "express@^4.18.2",
@@ -97,11 +148,18 @@
           "body-parser@^1.20.2"
         ]
       },
-      "plugins": {}
+      "soap_modules": {
+        "typescript": [],
+        "javascript": []
+      }
     },
     {
       "name": "AWS Serverless",
       "alias": "aws",
+      "languages": [
+        "typescript",
+        "javascript"
+      ],
       "packages": {
         "typescript": [
           "@aws-cdk/aws-apigateway@^1.204.0",
@@ -120,7 +178,10 @@
           "aws-sdk@^2.1483.0"
         ]
       },
-      "plugins": {}
+      "soap_modules": {
+        "typescript": [],
+        "javascript": []
+      }
     },
     {
       "name": "NestJS",
@@ -151,7 +212,76 @@
           "dev:@nestjs/testing@^10.0.0"
         ]
       },
-      "plugins": {}
+      "soap_modules": {
+        "typescript": [],
+        "javascript": []
+      }
+    }
+  ],
+  "auth_frameworks": [
+    {
+      "name": "PassportJS",
+      "alias": "passport",
+      "languages": [
+        "typescript",
+        "javascript"
+      ],
+      "packages": {
+        "typescript": [
+          "passport"
+        ],
+        "javascript": [
+          "passport"
+        ]
+      },
+      "soap_modules": {
+        "typescript": [],
+        "javascript": []
+      }
+    }
+  ],
+  "test_frameworks": [
+    {
+      "name": "Jest",
+      "alias": "jest",
+      "languages": [
+        "typescript",
+        "javascript"
+      ],
+      "packages": {
+        "typescript": [
+          "jest"
+        ],
+        "javascript": [
+          "jest"
+        ]
+      },
+      "soap_modules": {
+        "typescript": [],
+        "javascript": []
+      }
+    }
+  ],
+  "messaging": [
+    {
+      "name": "RabbitMQ",
+      "alias": "rabbit",
+      "languages": [
+        "typescript",
+        "javascript"
+      ],
+      "packages": {
+        "typescript": [
+          "amqplib"
+        ],
+        "javascript": [
+          "amqplib"
+        ]
+      },
+      "soap_modules": {
+        "typescript": [],
+        "javascript": []
+      }
     }
   ],
   "platforms": []
