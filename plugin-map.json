@@ -163,8 +163,8 @@
         ]
       },
       "soap_modules": {
-        "typescript": [],
-        "javascript": []
+        "typescript": ["@soapjs/soap-express"],
+        "javascript": ["@soapjs/soap-express"]
       }
     },
     {
